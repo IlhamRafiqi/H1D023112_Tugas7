@@ -3,6 +3,7 @@
 **NIM:** H1D023112  
 **Tugas 7:** Routes, Side Menu, Login, dan Local Storage
 
+![Tampilan Aplikasi](Register.png)
 ![Demo Aplikasi](Login.gif) 
 ![Demo Aplikasi](Utama.gif) 
 ![Demo Aplikasi](Side.gif)
