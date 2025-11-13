@@ -3,6 +3,8 @@
 **NIM:** H1D023112  
 **Tugas 7:** Routes, Side Menu, Login, dan Local Storage
 
+![Demo Aplikasi](Login.gif) ![Demo Aplikasi](Utama.gif) ![Demo Aplikasi](Side.gif)
+
 ## Deskripsi
 Aplikasi mobile dengan fitur login, register, dan manajemen profil. Data disimpan lokal menggunakan SharedPreferences.
 
