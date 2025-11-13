@@ -1,109 +1,54 @@
-# Aplikasi Input Data Mahasiswa
+# Aplikasi Flutter Sederhana
 
-Aplikasi Flutter untuk input data mahasiswa (Nama, NIM, Tahun Lahir) dan menampilkannya di halaman baru.
+**NIM:** H1D023112  
+**Tugas 7:** Routes, Side Menu, Login, dan Local Storage
 
-## Struktur Proyek
+## Deskripsi
+Aplikasi mobile dengan fitur login, register, dan manajemen profil. Data disimpan lokal menggunakan SharedPreferences.
 
+## Fitur
+- Register & Login
+- Auto-login (session tersimpan)
+- Profile, Settings, About
+- Side drawer menu
+- Logout
+
+## Teknologi
+- Flutter 3.35.7
+- Provider (state management)
+- SharedPreferences (local storage)
+
+## Struktur
 ```
 lib/
-├── main.dart              # Entry point aplikasi
-└── ui/
-    ├── form_data.dart     # Halaman form input
-    └── tampil_data.dart   # Halaman tampilan data
+ main.dart
+ pages/          # login, register, home, profile, settings, about
+ providers/      # auth_provider
+ services/       # storage_service
 ```
-
-## Cara Kerja Passing Data
-
-### 1️⃣ Input Data (form_data.dart)
-
-Data diambil dari form menggunakan `TextEditingController`:
-
-```dart
-final _namaController = TextEditingController();
-final _nimController = TextEditingController();
-final _tahunLahirController = TextEditingController();
-```
-
-### 2️⃣ Kirim Data
-
-Saat tombol "Simpan" ditekan, data dikirim ke halaman `TampilData`:
-
-```dart
-// Ambil data dari controller
-String nama = _namaController.text;
-String nim = _nimController.text;
-String tahunLahir = _tahunLahirController.text;
-
-// Kirim ke halaman TampilData
-Navigator.of(context).push(
-  MaterialPageRoute(
-    builder: (context) => TampilData(
-      nama: nama,
-      nim: nim,
-      tahunLahir: tahunLahir,
-    ),
-  ),
-);
-```
-
-### 3️⃣ Terima Data (tampil_data.dart)
-
-Halaman `TampilData` menerima data melalui constructor:
-
-```dart
-class TampilData extends StatelessWidget {
-  final String nama;
-  final String nim;
-  final String tahunLahir;
-
-  const TampilData({
-    required this.nama,
-    required this.nim,
-    required this.tahunLahir,
-  });
-```
-
-### 4️⃣ Gunakan Data
-
-Data yang diterima bisa langsung digunakan:
-
-```dart
-Text('Nama saya $nama, NIM $nim')
-
-// Atau untuk perhitungan
-int umur = DateTime.now().year - int.parse(tahunLahir);
-```
-
-## Diagram Alur
-
-```
-FormData (Input) 
-    ↓
-Validasi Form
-    ↓
-Ambil Data dari Controller
-    ↓
-Navigator.push + Kirim Data
-    ↓
-TampilData (Terima melalui constructor)
-    ↓
-Tampilkan Data di UI
-```
-
-## Kenapa Pakai Constructor?
-
-✅ **Mudah dipahami**  
-✅ **Type-safe** (tipe data jelas)  
-✅ **Cocok untuk data sederhana**  
-✅ **Best practice untuk StatelessWidget**
 
 ## Cara Menjalankan
-
 ```bash
 flutter pub get
 flutter run
 ```
 
----
+## Cara Pakai
+1. Register akun baru
+2. Login dengan akun tersebut
+3. Akses menu: Profile, Settings, About
+4. Data tersimpan otomatis
 
-**Catatan:** Passing data dengan constructor cocok untuk aplikasi sederhana. Untuk aplikasi kompleks, gunakan state management (Provider, Bloc, dll).
+## Penjelasan Kode
+
+**storage_service.dart**  
+Menyimpan data user di SharedPreferences (format JSON).
+
+**auth_provider.dart**  
+Mengelola state login/logout dengan Provider.
+
+**Pages**  
+6 halaman: Login, Register, Home, Profile, Settings, About.
+
+---
+Made with Flutter 
